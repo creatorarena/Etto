@@ -1,20 +1,19 @@
 package com.etto.transfer.ettoTransferService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class EttoTransferServiceApplication extends SpringBootServletInitializer{
+public class EttoTransferServiceApplication {
+
+	private static Logger log = LoggerFactory.getLogger(EttoTransferServiceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(EttoTransferServiceApplication.class, args);
-		System.out.println("hello aws");
+		log.info("hello");
 	}
 	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application){
-		return application.sources(EttoTransferServiceApplication.class);
-	}
 }
