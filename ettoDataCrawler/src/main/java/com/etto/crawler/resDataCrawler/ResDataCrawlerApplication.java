@@ -2,20 +2,15 @@ package com.etto.crawler.resDataCrawler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
 
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
-import lombok.extern.log4j.Log4j;
-
-import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Slf4j
 @SpringBootApplication
 public class ResDataCrawlerApplication {
 	private static Logger log = LoggerFactory.getLogger(ResDataCrawlerApplication.class);

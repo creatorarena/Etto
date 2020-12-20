@@ -27,7 +27,8 @@ public class CRUDTest {
 		account.setIsbn13("0123456789012");
 		repository.save(account);
 		repository.flush();
-
+		repository.findByNameLike("na");
+		
 	}
 
 	@Test

@@ -2,6 +2,7 @@ package com.etto.transfer.ettoTransferService.domain;
 
 import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
+import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
+@Component
 public class Account extends AbstractPersistable<Long> {
 
 	private String name;
