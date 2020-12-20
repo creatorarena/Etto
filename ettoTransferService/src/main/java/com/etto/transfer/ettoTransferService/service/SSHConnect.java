@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.etto.transfer.ettoTransferService.domain.AwsUser;
+import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +30,7 @@ public class SSHConnect {
 	private String host;
 	private String port;
 
-	private String key;
+	private String key = "C:/Users/user/Desktop/Etto/ettoTransferService/src/main/resources/public.pem";
 	
 	//User Information for ssh Connect
 	public HashMap<String, Object> getConInfo(HashMap<String, Object> sessionID){
@@ -61,8 +64,39 @@ public class SSHConnect {
 	@ExceptionHandler(AwsConnectException.class)
 	public int connectTo(HashMap<String, Object> sessionID) {
 		if(usrinfoCheck(sessionID) == 1) {
-			log.info("Starting Connect");
-			usrlist.add(sessionID);
+			log.info("Starting Connect =====> ");
+			try
+			{
+				JSch jsch = new JSch();
+				jsch.addIdentity(key);
+
+				Session session = jsch.getSession(
+				sessionID.get("user").toString(),
+				sessionID.get("host").toString(),
+					(int)sessionID.get("port"));
+				log.info("session created");
+
+				session.setConfig("StrictHostKeyChecking", "no");
+				session.setConfig("GSSAPIAuthentication", "no");
+				session.setServerAliveInterval(120 * 1000);
+				session.setServerAliveCountMax(1000);
+				session.setConfig("TCPKeepAlive","yes");
+
+				session.connect();
+
+				Channel channel = session.openChannel("shell");
+		
+				channel.setInputStream(System.in);
+				channel.setOutputStream(System.out);
+	
+				channel.connect(3*1000);
+
+				usrlist.add(sessionID);
+			}
+			catch(JSchException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		return 1;
 	}

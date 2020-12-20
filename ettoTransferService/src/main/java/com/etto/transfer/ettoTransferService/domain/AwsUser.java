@@ -17,17 +17,12 @@ import lombok.Setter;
 @Component
 public class AwsUser extends AbstractPersistable<Long> {
 
-	// private String ec2user = "etto";
-	// private String host= "13.114.173.103";
-	// private int port = 22;
-	// private String key;
-
 	@NotNull(message = "ec2user cannot be null")
-	private String ec2user;
+	private String ec2user = "etto";
 	@NotNull(message = "host cannot be null")
-	private String host;
+	private String host = "13.114.173.103";
 	@NotNull(message = "port cannot be null")
-	private String port;
+	private int port = 22;
 
 	private String key;
 
