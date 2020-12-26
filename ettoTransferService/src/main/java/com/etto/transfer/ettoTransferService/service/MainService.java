@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class MainService {
 
 	private Logger log = LoggerFactory.getLogger(MainService.class);
-	private HashMap<String, Object> sessionID;
+	// private HashMap<String, Object> sessionID;
 
 	@Autowired
 	SSHConnect sshConnect;
@@ -22,21 +22,19 @@ public class MainService {
 	@EventListener(ApplicationReadyEvent.class)
 	public void mainService(){
 		log.info("Started MainService");
-		sessionID = new HashMap<String, Object>();
-		if(sshConnect.getConInfo(sessionID) != null);
-		{
-			log.info("SSH Session Information is created");
-			sshConnect.connectTo(sessionID);
-		}
+		// sessionID = new HashMap<String, Object>();
+		// if(sshConnect.getConInfo(sessionID) != null);
+		// {
+		// 	log.info("SSH Session Information is created");
+		// 	sshConnect.connectTo(sessionID);
+		// }
 		log.info("closing apl");
 	}
 	
 	public void junitConnectTest(){
 
 		log.info("Started Junit Test");
-		sessionID = new HashMap<String, Object>();
-		sshConnect.getConInfo(sessionID);
-
+		// sessionID = new HashMap<String, Object>();
 	}
 	
 }
