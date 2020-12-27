@@ -18,7 +18,8 @@ public class NewTargetServer {
 
 	Logger log = LoggerFactory.getLogger(NewTargetServer.class);
 	
-	@Async("executorTest")
+	//by Park, change ssh connecting to async thread
+	@Async("sshConnect")
 	public void executor(AwsUser awsUser) {
 		log.info("success get Thread and started");
 		HashMap<String, Object> sessionID = new HashMap<String, Object>();

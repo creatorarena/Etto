@@ -17,7 +17,7 @@ public class Ansyconfig implements AsyncConfigurer{
 	private static int TASK_QUEUE_CAPACITY = 10;
 	private static String BEAN_NAME = "CrawlerExecutor";
 
-	@Bean(name = "executorTest")
+	@Bean(name = "sshConnect")
 	@Override
 	public Executor getAsyncExecutor() {
 		
